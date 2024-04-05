@@ -86,21 +86,19 @@ const updateBinItem = async (req, res) => {
 //@access   Public
 const deleteBinItem = async (req, res) => {
   const binId = req.params.id;
-  
-  try {
+
     // Delete the bin item from the database
     const sql = "DELETE FROM bins WHERE id = ?";
-    const result = await connectDb.query(sql, [binId]);
+    connectDb.query(sql, [binId], (err, result) => {
+      if (err) {
+        console.log("Error delete bin :", err);
+        return res.status(500).json({ error:err });
+      } else {
+        return res.status(201).json({ message: "success" });
+      }
+    });
 
-    if (result.affectedRows > 0) {
-      return res.status(200).json({ message: "success" });
-    } 
-  } catch (error) {
-    console.error("Error:", error);
-    return res.status(500).json({ error: "Internal Server Error" });
-  }
 };
-
 
 //@desc     GET BIN ITEM
 //@route    GET /api/bin-items/:id
