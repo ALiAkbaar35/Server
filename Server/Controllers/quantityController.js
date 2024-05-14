@@ -36,6 +36,7 @@ const createQuantity = async (req, res) => {
       !created_at ||
       !updated_at
     ) {
+      console.log(part_id, store_id, bin_id, qty, user_id, created_at, updated_at);
       return res.status(400).json({ error: "All fields are mandatory" });
     }
 
@@ -78,6 +79,8 @@ const updateQuantity = async (req, res) => {
       !created_at ||
       !updated_at
     ) {
+      console.log("in quantity",part_id, store_id, bin_id, qty, user_id, created_at, updated_at);
+      console.log(part_id,bin_id, qty, user_id, created_at, updated_at);
       return res.status(400).json({ error: "All fields are mandatory" });
     }
 
@@ -96,6 +99,7 @@ const updateQuantity = async (req, res) => {
     ]);
 
     if (result) {
+      
       return res.status(200).json({ message: "success" });
     }
   } catch (error) {

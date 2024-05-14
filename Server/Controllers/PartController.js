@@ -144,6 +144,8 @@ const getPart = (req, res) => {
   res.status(200).json({ message: `Get part ${req.params.id}` });
 };
 
+
+
 module.exports = {
   getAllParts,
   createPart,

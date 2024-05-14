@@ -18,6 +18,18 @@ app.use("/api/workshops", require("./Routes/workshopRoutes"));
 app.use("/api/quantities", require("./Routes/quantityRoutes"));
 app.use("/api/purchaseOrders", require("./Routes/purchaseOrder"));
 app.use("/api/po_dtls", require("./Routes/po_dtlsRoutes"));
+app.use("/api/goodsReceiptNotes", require("./Routes/goodsReceiptNotesRoutes"));
+app.use("/api/grn_dtls", require("./Routes/grn_dtlsRoutes"));
+app.use("/api/issueParts", require("./Routes/issuePartsRoutes"));
+app.use("/api/i_p_dtls", require("./Routes/i_P_dtlsRoutes"));
+app.use("/api/companies", require("./Routes/companiesRoutes"));
+app.use("/api/roles", require("./Routes/rolesRoutes"));
+app.use("/api/sites", require("./Routes/siteRoutes"));
+app.use("/api/departments", require("./Routes/departmentRoutes"));
+app.use("/api/login", require("./Routes/loginRoutes"));
+app.use("/api/signup", require("./Routes/signupRoutes")); 
+//app.use("/api/register", require("./Routes/jsonConfig.js"));
+
 app.use(errorhandler);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

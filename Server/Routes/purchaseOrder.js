@@ -6,6 +6,7 @@ const {
   updatepurchaseOrder,
   deletepurchaseOrder,
   getpurchaseOrder,
+  updatePartStatus,
 } = require("../Controllers/purchaseOrdersController");
 
 router.route("/").get(getAllpurchaseOrder).post(createpurchaseOrder);
@@ -15,5 +16,8 @@ router
   .put(updatepurchaseOrder)
   .delete(deletepurchaseOrder)
   .get(getpurchaseOrder);
+
+router.patch("/:id", updatePartStatus);
+
 
 module.exports = router;

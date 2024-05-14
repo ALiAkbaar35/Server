@@ -11,7 +11,6 @@ const getContacts = (req, res) => {
 //@route    POST /api/contacts
 //@access   Public
 const createContact = (req, res) => {
-    console.log("requested body is : ", req.body);
     const { name, email, phone } = req.body;
     if (!name || !email || !phone) {
         res.status(400);

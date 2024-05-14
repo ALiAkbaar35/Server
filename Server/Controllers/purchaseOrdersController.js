@@ -157,9 +157,31 @@ const getpurchaseOrder = (req, res) => {
   res.status(200).json({ message: `Get purchaseOrder ${req.params.id}` });
 };
 
+
+const updatePartStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    // Update the status of the part in the database
+    const sql = "UPDATE purchase_orders SET status = ? WHERE id = ?";
+    const result = await connectDb.query(sql, [status, id]);
+
+    if (result) {
+      return res.status(201).json({ message: "success" });
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    return res.status(500).json({ error: "Failed to update part status" });
+  }
+};
+
+
+
 module.exports = {
   getAllpurchaseOrder,
   createpurchaseOrder,
+  updatePartStatus,
   updatepurchaseOrder,
   deletepurchaseOrder,
   getpurchaseOrder,
